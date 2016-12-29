@@ -8,15 +8,13 @@ static struct input_dev *button_dev;
 
 void bcm_wakeup(void)  
 {  
-	printk(KERN_ERR"--yuelei--1>%s:Enter!\n" , __func__);  
 	input_report_key(button_dev, KEY_WAKEUP, 1);  
 	input_sync(button_dev);  
 }
 
 static int __init button_init(void)  
 {  
-	int error;  
-	printk(KERN_ERR"--yuelei--1>%s:Enter!\n" , __func__);  
+	int error;   
 
 	//	if (request_irq(BUTTON_IRQ, button_interrupt, 0, "button",NULL)) {  
 	//		printk(KERN_ERR"button.c: Can't allocate irq %d\n", button_irq);  
@@ -43,8 +41,7 @@ static int __init button_init(void)
 	}  
 
 	//input_report_key(button_dev, KEY_WAKEUP , 1);  
-	//input_sync(button_dev);  
-	printk(KERN_ERR"--yuelei--2>%s:Out!\n" , __func__);  
+	//input_sync(button_dev);   
 
 	return 0;  
 
@@ -52,13 +49,11 @@ err_free_dev:
 	input_free_device(button_dev);  
 err_free_irq:  
 	//free_irq(BUTTON_IRQ, button_interrupt);  
-	printk(KERN_ERR"--yuelei--3>%s:Out_error!\n" , __func__);  
 	return error;  
 }  
 
 static void __exit button_exit(void)  
 {  
-	printk(KERN_ERR"--yuelei--1>%s:Enter!\n" , __func__);  
 	input_unregister_device(button_dev);  
 	//free_irq(BUTTON_IRQ, button_interrupt);  
 }  
